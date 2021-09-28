@@ -1,0 +1,3 @@
+rootProject.name = 'testowanie'
+include 'kodilla-testing'
+
