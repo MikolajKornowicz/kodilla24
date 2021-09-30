@@ -20,7 +20,7 @@ public class TestingMain {
         SimpleCalculator calculator = new SimpleCalculator(10,5);
 
         calculator.add();
-        int addition = calculator.getAddresult();
+        int addition = 15;
         if (addition == calculator.getAddresult()){
             System.out.println("Addition works");
         } else {
@@ -28,7 +28,7 @@ public class TestingMain {
         }
 
         calculator.subtract();
-        int subtraction = calculator.getSubresult();
+        int subtraction = 5;
         if (subtraction == calculator.getSubresult()){
             System.out.println("Subtraction works");
         } else {
