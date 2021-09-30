@@ -17,9 +17,9 @@ public class TestingMain {
         }
 
         System.out.println("Testing calculator: \n");
-        SimpleCalculator calculator = new SimpleCalculator(10,5);
+        SimpleCalculator calculator = new SimpleCalculator();
 
-        calculator.add();
+        calculator.add(10, 5);
         int addition = 15;
         if (addition == calculator.getAddresult()){
             System.out.println("Addition works");
@@ -27,7 +27,7 @@ public class TestingMain {
             System.out.println("Addition error");
         }
 
-        calculator.subtract();
+        calculator.subtract(10, 5);
         int subtraction = 5;
         if (subtraction == calculator.getSubresult()){
             System.out.println("Subtraction works");

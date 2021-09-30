@@ -7,16 +7,18 @@ public class SimpleCalculator {
     private int addresult;
     private int subresult;
 
-    public SimpleCalculator (int a, int b) {
-        this.a = a;
-        this.b = b;
+    public SimpleCalculator () {
     }
-    public int add () {
+    public int add (int a, int b) {
         this.addresult = addresult;
+        this.a = a;
+        this.b =b;
         addresult = a + b;
         return addresult;
     }
-    public int subtract (){
+    public int subtract (int a, int b){
+        this.a = a;
+        this.b = b;
         this.subresult = subresult;
         subresult = a - b;
         return subresult;
