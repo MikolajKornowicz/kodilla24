@@ -20,16 +20,16 @@ public class TestingMain {
         SimpleCalculator calculator = new SimpleCalculator(10,5);
 
         calculator.add();
-        int additon = calculator.getAddresult();
-        if (additon == calculator.getAddresult()){
+        int addition = calculator.getAddresult();
+        if (addition == calculator.getAddresult()){
             System.out.println("Addition works");
         } else {
             System.out.println("Addition error");
         }
 
         calculator.subtract();
-        int substraction = calculator.getSubresult();
-        if (substraction == calculator.getSubresult()){
+        int subtraction = calculator.getSubresult();
+        if (subtraction == calculator.getSubresult()){
             System.out.println("Subtraction works");
         } else {
             System.out.println("Subtraction error");
