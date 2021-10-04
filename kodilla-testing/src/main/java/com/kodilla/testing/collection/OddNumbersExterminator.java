@@ -26,6 +26,7 @@ public class OddNumbersExterminator {
         return even;
     }
 
+
     public List<Integer> getOdd() {
         return odd;
     }
