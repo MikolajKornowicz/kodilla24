@@ -2,6 +2,10 @@ package com.kodilla.testing.collection;
 
 import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.jupiter.api.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 @DisplayName("Collection test suite")
@@ -24,46 +28,24 @@ public class CollectionTestSuite {
         void testOddNumbersExterminatorNormalList() {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5);
+        List<Integer> expected = Arrays.asList(2,4);
         //When
-        for (int n = 0; n < 20; n++) {
-            oddNumbersExterminator.numbers.add(random.nextInt(99 + 1));
-        }
-
-            oddNumbersExterminator.exterminate(oddNumbersExterminator.numbers);
-
+            oddNumbersExterminator.exterminate(numbers);
             //Then
-            System.out.println(oddNumbersExterminator.getEven());
-            System.out.println(oddNumbersExterminator.getOdd());
-        for (int m = 0; m < oddNumbersExterminator.even.size(); m++) {
-            if (oddNumbersExterminator.even.get(m) % 2 == 0) {
-                System.out.println("Even works");
-            } else {
-                System.out.println("Even error");
-            }
-        }
-        for (int o = 0; o < oddNumbersExterminator.odd.size(); o++) {
-            if (oddNumbersExterminator.odd.get(o) % 2 != 0) {
-                System.out.println("Odd works");
-            } else {
-                System.out.println("Odd error");
-            }
-        }
+        Assertions.assertEquals(expected, oddNumbersExterminator.even);
         }
     @DisplayName("Testing empty list")
     @Test
     void testOddNumbersExterminatorEmptyList() {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-
+        List<Integer> numbers = new ArrayList<>();
+        List<Integer> expected = new ArrayList<>();
         //When
-        oddNumbersExterminator.exterminate(oddNumbersExterminator.numbers);
+        oddNumbersExterminator.exterminate(numbers);
 
         //Then
-        if (oddNumbersExterminator.exterminate(oddNumbersExterminator.numbers).size() == 0) {
-            System.out.println("Empty list works");
-        }else {
-            System.out.println("Empty list error");
+        Assertions.assertEquals(expected, oddNumbersExterminator.even);
         }
-
-    }
     }
