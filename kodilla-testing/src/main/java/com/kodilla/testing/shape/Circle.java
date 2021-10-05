@@ -4,7 +4,7 @@ public class Circle implements Shape {
 
     private String shapeName = "Circle";
     private int a;
-    private int h;
+    private int r;
     private double field;
 
     @Override
@@ -14,9 +14,10 @@ public class Circle implements Shape {
 
     @Override
     public double getField() {
-        return this.field = field;
+        return field = 2*Math.PI*r;
     }
-    public double fieldCalculator (int a, int b) {
-        return field = (a*h)/2;
+
+    public String toString () {
+        return "Circle r= " + r + "field = " + field;
     }
 }
