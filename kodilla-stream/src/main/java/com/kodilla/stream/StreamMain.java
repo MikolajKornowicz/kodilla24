@@ -1,5 +1,6 @@
 package com.kodilla.stream;                                                   // [1]
 
+import com.kodilla.stream.array.ArrayOperations;
 import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
@@ -7,7 +8,6 @@ import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.lambda.Executor;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.lambda.Processor;
-import com.kodilla.stream.person.People;
 import com.kodilla.stream.reference.FunctionalCalculator;
 import com.kodilla.stream.forumuser.ForumUser;
 import java.time.LocalDate;
@@ -87,10 +87,13 @@ public class StreamMain {                                                     //
                         .collect(Collectors.toMap(ForumUser::getID, forumUser -> forumUser));
         System.out.println(forumUserMap);
 
-
-
-
-
-
+        System.out.println("\n" + "zadanie 7.5");
+        ArrayOperations arrayOperations = new ArrayOperations();
+        int [] numbers = new int[5];
+        for (int n = 0; n < 5; n ++) {
+            numbers [n] = n + 15;
+        }
+        Double avg = ArrayOperations.getAverage(numbers);
+        System.out.println(avg);
     }
 }

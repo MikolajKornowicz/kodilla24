@@ -123,13 +123,16 @@ class BookDirectoryTestSuite {
         Book book5 = new Book("Harry Potter", "J.K Rowling", 2000);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser libraryUserMock = mock(LibraryUser.class);
+        List <Book> bookList = new ArrayList<>();
+        bookList.add(book1);
+        bookList.add(book2);
+        bookList.add(book3);
+        bookList.add(book4);
+        bookList.add(book5);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUserMock)).thenReturn(bookList);
         //when
-        bookLibrary.listBooksInHandsOf(libraryUserMock).add(book1);
-        bookLibrary.listBooksInHandsOf(libraryUserMock).add(book2);
-        bookLibrary.listBooksInHandsOf(libraryUserMock).add(book3);
-        bookLibrary.listBooksInHandsOf(libraryUserMock).add(book4);
-        bookLibrary.listBooksInHandsOf(libraryUserMock).add(book5);
+        int booksize = bookLibrary.listBooksInHandsOf(libraryUserMock).size();
         //then
-        Assertions.assertEquals(5,bookLibrary.listBooksInHandsOf(libraryUserMock).size());
+        Assertions.assertEquals(5,booksize);
     }
 }
