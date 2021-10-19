@@ -108,10 +108,13 @@ class BookDirectoryTestSuite {
         Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser libraryUserMock = mock(LibraryUser.class);
+        List <Book> bookList = new ArrayList<>();
+        bookList.add(book1);
+        when (libraryDatabaseMock.listBooksInHandsOf(libraryUserMock)).thenReturn(bookList);
         //when
-        bookLibrary.listBooksInHandsOf(libraryUserMock).add(book1);
+        int bookListSize = bookLibrary.listBooksInHandsOf(libraryUserMock).size();
         //then
-        Assertions.assertEquals(1,bookLibrary.listBooksInHandsOf(libraryUserMock).size());
+        Assertions.assertEquals(1,bookListSize);
     }
     @Test
     void testFullListOfBooksInHandsOf () {
