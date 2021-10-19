@@ -3,21 +3,11 @@ package com.kodilla.exception.test;
     public class FirstChallenge {
 
         public double divide(double a, double b) throws ArithmeticException {
-            try {
             if (b == 0) {
                 throw new ArithmeticException();
             }
-            return a/b;
-
-            } catch (ArithmeticException e) {
-                System.out.println("Can't divide by 0" + "Error: " + e);
-            } finally {
-                System.out.println("Maths");
-            }
-            return a/b;
+            return a / b;
         }
-
-
 
         /**
          * This main can throw an ArithmeticException!!!
@@ -25,9 +15,14 @@ package com.kodilla.exception.test;
          */
         public static void main(String[] args) {
             FirstChallenge firstChallenge = new FirstChallenge();
+            try {
             double result = firstChallenge.divide(3, 0);
-
-            System.out.println(result);
+                System.out.println(result);
+            } catch (ArithmeticException e){
+                System.out.println("Division by 0 is impossible");
+            } finally {
+                System.out.println("That's how math works");
+            }
         }
     }
 
