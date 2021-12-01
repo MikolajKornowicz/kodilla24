@@ -1,12 +1,14 @@
 package challenges;
 
+import java.math.BigDecimal;
+
 public class Product {
 
     private String name;
     private String type;
-    private double price;
+    private BigDecimal price;
 
-    public Product(String name, String type, double price) {
+    public Product(String name, String type, BigDecimal price) {
         this.name = name;
         this.type = type;
         this.price = price;
@@ -20,7 +22,7 @@ public class Product {
         return type;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 }
