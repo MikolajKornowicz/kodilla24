@@ -25,7 +25,24 @@ public class ShopApp {
         OrderProcessor orderProcessor = new OrderProcessor(informationService, orderService, orderRepository);
         orderProcessor.process(orderRequest);
 
+        System.out.println("\n");System.out.println("\n");
 
+        Buyer buyer2 = new Buyer("Andrzej", "Andrzej", "Polak", "Polak@gmail.com");
+        Seller seller2 = new Seller("sklepnarciarza.com", "Kolega", "Dody");
+        Product product2 = new Product("Narty", "Sport i Akcesoria", new BigDecimal("9999.99"));
+
+        InformationService informationService2 = new InformationService();
+        OrderService orderService2 = new OrderService();
+        OrderRepository orderRepository2 = new OrderRepository();
+        OrderRequest orderRequest2 = new OrderRequest(buyer2, seller2);
+
+        Map<Product, Integer> ordered2 = new HashMap<>();
+        ordered2.put(product2, 2);
+
+        orderRequest2.setProducts(ordered2);
+
+        OrderProcessor orderProcessor2 = new OrderProcessor(informationService2, orderService2, orderRepository2);
+        orderProcessor2.process(orderRequest2);
 
     }
 
