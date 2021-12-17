@@ -1,1 +1,2 @@
+John bought from Jane this product: T-shirt for: 97.76
 Andrzej bought from Kolega this product: Narty for: 19999.98

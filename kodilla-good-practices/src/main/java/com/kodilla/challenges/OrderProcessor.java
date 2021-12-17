@@ -23,7 +23,6 @@ public class OrderProcessor {
 
         OrderDto orderDto = new OrderDto(orderRequest.getBuyer(), orderRequest.getProducts(), true, null);
 
-        //orderRepository.save(orderDto);
         return orderDto;
     }
 }
