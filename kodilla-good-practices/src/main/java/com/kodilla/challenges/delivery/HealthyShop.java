@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ExtraFoodsShop extends Shop{
+public class HealthyShop extends Shop {
 
-    private String shopName = setShopName("ExtraFoodsShop");
-    private String location = setLocation("Sunny Village");
+    private String shopName = setShopName("HealthyShop");
+    private String location = setLocation("Nice Village");
     private Map<String, BigDecimal> assortment = new HashMap<>();
 
-    public ExtraFoodsShop(Map assortment) {
+    public HealthyShop(Map assortment) {
         super(assortment);
     }
-    }
+}
 
