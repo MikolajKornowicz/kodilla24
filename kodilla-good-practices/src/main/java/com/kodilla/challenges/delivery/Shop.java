@@ -2,18 +2,16 @@ package com.kodilla.challenges.delivery;
 
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 
 public class Shop {
 
     private String shopName;
     private String location;
-    private Map<String, BigDecimal> assortment;
+    private List<String> assortment;
 
-    public Shop(Map assortment) {
-        this.shopName = shopName;
-        this.location = location;
-        this.assortment = assortment;
+    public Shop() {
     }
 
     public String getShopName() {
@@ -34,23 +32,14 @@ public class Shop {
         return location;
     }
 
-    public Map<String, BigDecimal> getAssortment() {
+    public List<String>  getAssortment() {
         return assortment;
     }
 
-    public void setAssortment(Map<String, BigDecimal> assortment) {
+    public void setAssortment(List<String> assortment) {
         this.assortment = assortment;
     }
 
-    public boolean process(String deliverTo, Product product, BigDecimal amount) {
-        if (getAssortment().containsKey(product.getProductName())) {
-            System.out.println(getShopName () + " from: " + location + " is going to deliver: " +  product.getProductName() + " to: " + deliverTo + ". Total price: " + product.getPrice().multiply(amount) + " PLN.");
-            assortment.remove(product.getProductName());
-            return true;
-        } else
-            System.out.println(getShopName () + " is unable to deliver: " + product.getProductName() + " to: " + deliverTo + ". Reason: out of stock.");
-        return false;
-    }
 }
 
 
