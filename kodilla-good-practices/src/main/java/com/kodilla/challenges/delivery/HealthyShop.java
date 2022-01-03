@@ -20,6 +20,7 @@ public class HealthyShop extends Shop {
         return assortment;
     }
 
+    @Override
     public boolean process(String deliverTo, Product product, int amount){
         if (assortment.contains(product.getProductName())) {
             BigDecimal total = product.getPrice().multiply(BigDecimal.valueOf(amount)).setScale(2,  RoundingMode.FLOOR);

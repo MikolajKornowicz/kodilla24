@@ -2,39 +2,44 @@ package com.kodilla.challenges.airport;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Flight {
 
-    private Airport departure;
-    private Airport arrival;
-    private String name;
-    private Map<Airport, Airport> flightMap = new HashMap<>();
+    private String departure;
+    private String arrival;
 
-    public Flight(Airport departure, Airport arrival, String name) {
+    public Flight(String departure, String arrival) {
         this.departure = departure;
         this.arrival = arrival;
-        this.name = name;
-
     }
 
-    public Airport getDeparture() {
+    public String getDeparture() {
         return departure;
     }
 
-    public Airport getArrival() {
+    public String getArrival() {
         return arrival;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Map<Airport, Airport> getFlightMap() {
-        return flightMap;
     }
 
     @Override
     public String toString() {
-        return "Flight: " + name + ", from: " + departure + ", to: " + arrival;
+        return "Flight{" +
+                "departure='" + departure + '\'' +
+                ", arrival='" + arrival + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Flight)) return false;
+        Flight flight = (Flight) o;
+        return departure.equals(flight.departure) && arrival.equals(flight.arrival);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(departure, arrival);
     }
 }

@@ -6,45 +6,40 @@ import java.util.stream.Collectors;
 
 public class FlightRadar {
 
-private final List<Flight> flightList = new ArrayList<>();
+private final List<Flight> flightList = List.of(
+        new Flight("GDA", "WRO"),
+        new Flight("WRO", "WAW"),
+        new Flight("WAW", "WRO"),
+        new Flight("GDA", "WAW"),
+        new Flight("GDA", "KRK"),
+        new Flight("WRO", "KRK"),
+        new Flight ("WAW", "GDA")
 
-    public List <Flight> createFlightList (Flight flight) {
-        flightList.add(flight);
-        return flightList;
+);
+
+public List<Flight> allFrom (String city) {
+    return flightList.stream()
+            .filter(flight -> flight.getDeparture().equals(city))
+            .collect(Collectors.toList());
+}
+    public List<Flight> allTo (String city) {
+        return flightList.stream()
+                .filter(flight -> flight.getArrival().equals(city))
+                .collect(Collectors.toList());
     }
+public List<List <Flight>> allFlightsFromTo (String start, String destination) {
+    List <Flight> allFrom = allFrom(start);
+    List <Flight> allTo = allTo(destination);
 
-    public void addingProcess (Flight flight){
-        createFlightList(flight);
-        flight.getFlightMap().put(flight.getDeparture(),flight.getArrival());
-    }
-
-public void process (Airport startingAirport, Airport destination){
-        String flightToTake = flightList.stream()
-                .filter(flight -> flight.getArrival().equals(destination))
-                .filter(flight -> flight.getDeparture().equals(startingAirport))
-                .map(Flight::getName)
-                .collect(Collectors.joining());
-    System.out.println("Take:" + flightToTake);
-    if (flightToTake.length() == 0){
-        String changeTo = flightList.stream()
-                        .filter(flight -> flight.getArrival().equals(destination))
-                                .map(Flight::getName)
-                                        .collect(Collectors.joining());
-      String changeDeparturesFrom = flightList.stream()
-              .filter(flight -> flight.getName().contains(changeTo))
-                        .map(Flight::getDeparture)
-              .map(Airport::getAirportName)
-                                .collect(Collectors.joining());
-
-      String connectingFlight = flightList.stream()
-                      .filter(flight -> flight.getDeparture().equals(startingAirport))
-                              .filter(flight -> flight.getArrival().getAirportName().equals(changeDeparturesFrom))
-                                      .map(Flight::getName)
-                                              .collect(Collectors.joining());
-        System.out.println("First take: " + connectingFlight + ", than change to: " + changeTo);
-        if (connectingFlight.length() == 0){
-            System.out.println("No such flight");
-        }
-    }
+    List <List <Flight>> flightList = new ArrayList<>();
+    allFrom.stream()
+            .filter(flight -> allTo.contains(new Flight(flight.getArrival(), destination)))
+            .forEach(flight -> {
+                flightList.add(List.of(
+                        flight,
+                        new Flight(flight.getArrival(), destination)
+                ));
+            });
+    return flightList;
 }
 }

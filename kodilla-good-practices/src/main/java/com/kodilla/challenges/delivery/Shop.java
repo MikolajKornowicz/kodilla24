@@ -40,6 +40,9 @@ public class Shop {
         this.assortment = assortment;
     }
 
+    public boolean process (String deliverTo, Product product, int amount) {
+        return true;
+    }
 }
 
 
