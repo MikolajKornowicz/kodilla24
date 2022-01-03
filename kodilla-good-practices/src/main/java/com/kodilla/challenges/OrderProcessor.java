@@ -7,7 +7,6 @@ public class OrderProcessor {
     private InformationService informationService;
     private OrderService orderService;
     private OrderRepository orderRepository;
-    private Seller seller;
 
     public OrderProcessor(InformationService informationService, OrderService orderService, OrderRepository orderRepository) {
         this.informationService = informationService;

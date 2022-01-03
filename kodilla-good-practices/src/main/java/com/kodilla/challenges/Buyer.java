@@ -5,7 +5,7 @@ public class Buyer {
     private String username;
     private String name;
     private String surname;
-    public String eMail;
+    private String eMail;
 
     public Buyer(String username, String name, String surname, String eMail) {
         this.username = username;
