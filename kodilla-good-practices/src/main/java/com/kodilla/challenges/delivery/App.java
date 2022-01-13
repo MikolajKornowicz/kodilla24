@@ -4,7 +4,7 @@ package com.kodilla.challenges.delivery;
 import java.math.BigDecimal;
 
 
-public class App {
+class App {
     public static void main (String[] args){
 Product product1 = new Product("Bread",new BigDecimal("5.15"));
 Product product2 = new Product("Soy Milk", new BigDecimal("6.49"));

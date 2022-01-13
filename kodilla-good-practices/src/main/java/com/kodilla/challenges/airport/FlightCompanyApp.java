@@ -2,7 +2,7 @@ package com.kodilla.challenges.airport;
 
 import java.util.List;
 
-public class FlightCompanyApp {
+class FlightCompanyApp {
 
     public static void main (String [] args ) {
 
