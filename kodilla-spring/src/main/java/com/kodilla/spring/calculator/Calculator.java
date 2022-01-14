@@ -33,7 +33,6 @@ public class Calculator {
         return  result;
     }
 
-    public Calculator(Display display) {
-        this.display = display;
+    public Calculator() {
     }
 }
