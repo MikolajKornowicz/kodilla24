@@ -13,6 +13,19 @@ public class Board {
         this.doneList = doneList;
     }
 
+    public TaskList addToDo (String chore) {
+        toDoList.getTasks().add(chore);
+        return toDoList;
+    }
+    public TaskList addInProgress (String chore) {
+        inProgressList.getTasks().add(chore);
+        return inProgressList;
+    }
+    public TaskList addDone (String chore) {
+        doneList.getTasks().add(chore);
+        return doneList;
+    }
+
     public void showChoreList () {
         System.out.println("to do: " + toDoList.toString());
         System.out.println("in progress: " + inProgressList.toString());
