@@ -16,7 +16,15 @@ public class TaskList {
     public List<String> getTasks() {
         return tasks;
     }
-    public TaskList () {
 
+    @Override
+    public String toString() {
+        return "TaskList{" +
+                "tasks=" + tasks +
+                '}';
+    }
+
+    public TaskList () {
+        this.tasks = new ArrayList<>();
     }
 }

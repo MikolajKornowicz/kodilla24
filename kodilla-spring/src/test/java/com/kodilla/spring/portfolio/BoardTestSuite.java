@@ -14,7 +14,10 @@ public class BoardTestSuite {
         //given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         Board board = context.getBean(Board.class);
-        //when & then
+        //when &
+        board.addToDo("chore");
+        board.addDone("chore");
+        // then
         board.showChoreList();
     }
 }
