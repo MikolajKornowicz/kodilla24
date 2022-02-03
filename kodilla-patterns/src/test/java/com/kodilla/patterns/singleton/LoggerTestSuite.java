@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 
 public class LoggerTestSuite {
 
-   Logger logger = Logger.INSTANCE;
+
     @Test
     void getLastLog() {
         //given
-
+        Logger logger = Logger.INSTANCE;
         //when
         String lastLog = "Last log";
         logger.log(lastLog);
