@@ -19,7 +19,7 @@ public final class ShoppingTask implements Task{
 
     @Override
     public String getTaskName() {
-        return this.taskName;
+        return taskName;
     }
 
     @Override

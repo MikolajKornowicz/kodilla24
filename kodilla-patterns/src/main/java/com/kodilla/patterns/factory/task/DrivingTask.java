@@ -20,7 +20,7 @@ public final class DrivingTask implements Task{
 
     @Override
     public String getTaskName() {
-        return this.taskName;
+        return taskName;
     }
 
     @Override
