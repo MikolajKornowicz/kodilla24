@@ -43,7 +43,7 @@ public class TaskTestSuite {
         boolean isExecuted = shoppingTask.isTaskExecuted(TaskFactory.SHOPPINGTASK);
         //then
         Assertions.assertEquals("Shopping Task", shoppingTask.getTaskName());
-        Assertions.assertEquals("Executing: SHOPPINGTASK", executing);
+        Assertions.assertEquals("Executing: SHOPPING", executing);
         Assertions.assertEquals(true, isExecuted);
     }
 }

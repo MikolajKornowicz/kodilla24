@@ -1,10 +1,10 @@
 package com.kodilla.patterns.factory.task;
 
-public class TaskFactory {
+public final class TaskFactory {
 
     public final static String DRIVINGTASK = "DRIVING";
     public final static String PAINTINGTASK = "PAINTING";
-    public final static String SHOPPINGTASK = "SHOPPINGTASK";
+    public final static String SHOPPINGTASK = "SHOPPING";
 
     public final Task doTask (final String taskClass) {
         switch (taskClass) {
