@@ -1,0 +1,51 @@
+CREATE TABLE ISSUESLISTS
+(
+    ID SERIAL,
+    NAME character(128)  charset utf8 not null
+);
+CREATE TABLE ISSUES
+(
+    ID SERIAL,
+    ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+    SUMMARY char(64) NOT NULL,
+    DESCRIPTION varchar(1024) NOT NULL,
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (ISSUESLIST_ID) REFERENCES issueslists (ID),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES users(ID)
+);
+INSERT INTO issueslists (NAME)
+values ("To do");
+INSERT INTO issueslists (NAME)
+values ("In progress");
+INSERT INTO issueslists (NAME)
+values ("Done");
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1, "task to do 2", "This is a task", 2);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1, "task to do 2", "This is a task", 3);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1, "task to do 2", "This is a task", 4);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1, "task to do 2", "This is a task", 5);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2, "task in progress 1", "task im busy with", 1);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2, "task in progress 2", "task im busy with", 2);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2, "task in progress 3", "task im busy with", 1);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2, "task in progress 4", "task im busy with", 3);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2, "task in progress 5", "task im busy with", 5);
+select * from issues;
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "done 1", "task already finished", 1);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "done 2", "task already finished", 2);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "done 3", "task already finished", 3);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "done 4", "task already finished", 4);
+INSERT INTO issues (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "done 5", "task already finished", 5);
+SELECT * from issues;
