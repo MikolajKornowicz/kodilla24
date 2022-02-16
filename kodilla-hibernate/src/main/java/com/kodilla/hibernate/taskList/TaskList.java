@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TASK LIST")
+@Table(name = "TASKLIST")
 public class TaskList {
 
     private int id;
@@ -29,7 +29,7 @@ public class TaskList {
     }
 
     @NotNull
-    @Column(name = "List Name")
+    @Column(name = "ListName")
     public String getListName() {
         return listName;
     }
