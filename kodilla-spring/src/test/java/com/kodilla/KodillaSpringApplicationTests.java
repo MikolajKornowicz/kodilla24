@@ -119,7 +119,7 @@ class KodillaSpringApplicationTests {
         assertEquals("This is a square.", name);
     }
 
-    @DisplayName("Test Random Shape Loaded method (Shape) get name")
+   /* @DisplayName("Test Random Shape Loaded method (Shape) get name")
     @Test
     void testShapeLoadedIntoContainer() {
         //Given
@@ -132,5 +132,9 @@ class KodillaSpringApplicationTests {
 
         //Then
         System.out.println("Chosen shape says: " + name);
-    }
+
+
+  }
+
+    */
 }

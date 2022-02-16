@@ -4,8 +4,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-
-public class ShopApp {
+ public class ShopApp {
     public static void main(String[] args) {
 
         Buyer buyer = new Buyer("JKowalski", "John", "Kowalski", "jkowal@gmail.com");

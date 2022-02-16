@@ -152,11 +152,11 @@ class BoardTestSuite {
                .filter(taskList -> taskList.getName().equals("In progress"))
                .flatMap(taskList -> taskList.getTasks().stream())
                .map(task -> Period.between(task.getCreated(), task.getDeadline()).getDays())
-               .mapToDouble(Double::new)
+               .mapToDouble(v -> v.doubleValue())
                .average()
                .orElse(0.0);
         //then
-        Assertions.assertEquals(8,avg, 0.001);
+        Assertions.assertEquals(9,avg, 0.001);
 
     }
 }

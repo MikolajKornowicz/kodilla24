@@ -7,6 +7,8 @@ plugins {
 group = 'com.kodilla'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+apply plugin: 'application'
+mainClassName = 'com.kodilla.challenges.ShopApp'
 
 repositories {
     mavenCentral()

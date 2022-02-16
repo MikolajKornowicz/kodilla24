@@ -1,5 +1,6 @@
 package com.kodilla.shape;
 
+
 public class Square  implements Shape{
 
     @Override
