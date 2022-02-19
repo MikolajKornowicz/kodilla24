@@ -41,8 +41,7 @@ public class Product {
         this.name = name;
     }
 
-    @OneToMany
-    @JoinColumn(name = "ITEM_ID")
+    @OneToMany(targetEntity = Item.class, mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Item getItem() {
         return item;
     }
