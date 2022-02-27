@@ -5,6 +5,11 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQuery(
+        name = "Company.retrieveByChars",
+        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE concat ('%',:name, '%')",
+        resultClass = Company.class
+)
 
 @Entity
 @Table(name = "COMPANIES")
