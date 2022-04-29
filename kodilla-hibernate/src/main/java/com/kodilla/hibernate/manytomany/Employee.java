@@ -9,7 +9,7 @@ import java.util.List;
 
 @NamedQuery(
         name = "Employee.retrieveBySurname",
-        query = "FROM Employee WHERE lastname like :LASTNAME"
+        query = "FROM Employee WHERE lastname like concat('%', :LASTNAME, '%') "
 )
 
 @Entity

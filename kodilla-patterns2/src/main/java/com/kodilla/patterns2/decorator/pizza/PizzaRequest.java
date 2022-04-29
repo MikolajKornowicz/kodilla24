@@ -1,2 +1,12 @@
-package com.kodilla.patterns2.decorator.pizza;public interface PizzaRequest {
+package com.kodilla.patterns2.decorator.pizza;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+public interface PizzaRequest {
+
+    String getBottom();
+    List<String> getToppings();
+
+    BigDecimal getPrice();
 }

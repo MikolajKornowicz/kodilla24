@@ -1,31 +1,28 @@
 package com.kodilla.patterns2.decorator.pizza;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Pizza implements PizzaRequest {
+public abstract class PizzaDecorator implements PizzaRequest {
 
-    private PizzaRequest pizzaRequest;
+    private final PizzaRequest pizzaRequest;
 
-    public Pizza(PizzaRequest pizzaRequest) {
+    public PizzaDecorator(PizzaRequest pizzaRequest) {
         this.pizzaRequest = pizzaRequest;
     }
 
     @Override
     public String getBottom() {
-        return "Basic dough";
+        return pizzaRequest.getBottom();
     }
 
     @Override
     public List<String> getToppings() {
-        List<String> toppings = new ArrayList<>();
-        toppings.add("sauce");
-        return toppings;
+        return pizzaRequest.getToppings();
     }
 
     @Override
     public BigDecimal getPrice() {
-        return new BigDecimal(15);
+        return pizzaRequest.getPrice();
     }
 }

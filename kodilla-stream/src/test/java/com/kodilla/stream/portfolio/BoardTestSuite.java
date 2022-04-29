@@ -156,7 +156,7 @@ class BoardTestSuite {
                .average()
                .orElse(0.0);
         //then
-        Assertions.assertEquals(9,avg, 0.001);
+        Assertions.assertEquals(8.333333333333334,avg, 0.001);
 
     }
 }

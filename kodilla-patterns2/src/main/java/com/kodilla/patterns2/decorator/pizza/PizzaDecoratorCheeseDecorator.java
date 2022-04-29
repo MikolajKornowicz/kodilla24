@@ -3,16 +3,12 @@ package com.kodilla.patterns2.decorator.pizza;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class PizzaCheeseDecorator extends Pizza{
+public class PizzaDecoratorCheeseDecorator extends PizzaDecorator {
 
-    public PizzaCheeseDecorator(PizzaRequest pizzaRequest) {
+    public PizzaDecoratorCheeseDecorator(PizzaRequest pizzaRequest) {
         super(pizzaRequest);
     }
 
-    @Override
-    public String getBottom() {
-        return super.getBottom();
-    }
 
     @Override
     public List<String> getToppings() {
