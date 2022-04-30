@@ -78,4 +78,24 @@ class PizzaDecoratorTestSuite {
         assertEquals(new BigDecimal(32), price);
 
     }
+
+    @Test
+    public void testVegetableProteinFullGrainPizzaDiscount(){
+        //given
+        PizzaRequest margherita = new BasicPizza();
+        margherita = new PizzaDecoratorCheeseDecorator(margherita);
+        margherita = new PremiumDoughDecorator(margherita);
+        margherita = new PizzaDecoratorProteinDecorator(margherita);
+        margherita = new PizzaDecoratorVegetablesDecorator(margherita);
+        margherita = new PizzaDiscountDecorator(margherita);
+        //when
+        String dough = margherita.getBottom();
+        int toppings = margherita.getToppings().size();
+        BigDecimal price = margherita.getPrice();
+        //then
+        assertEquals("Whole Grain Dough", dough);
+        assertEquals(4, toppings);
+        assertEquals(new BigDecimal("25.6"), price);
+
+    }
 }
