@@ -1,0 +1,94 @@
+kodilla_course> CREATE TABLE READER_AUD (
+                                           EVENT_ID INT(11) NOT NULL AUTO_INCREMENT,
+                                           EVENT_DATE DATETIME NOT NULL,
+                                           EVENT_TYPE VARCHAR(10) DEFAULT NULL,
+                                           READER_ID INT(11) NOT NULL,
+                                           OLD_FIRST_NAME VARCHAR(30),
+                                           NEW_FIRST_NAME VARCHAR(30),
+                                           OLD_LAST_NAME VARCHAR(30),
+                                           NEW_LAST_NAME VARCHAR(30),
+                                           OLD_PESELID INT(12),
+                                           NEW_PESELID INT(12),
+                                           PRIMARY KEY (EVENT_ID)
+                )
+
+kodilla_course> CREATE TABLE BOOKS_AUD (
+                                           EVENT_ID INT(11) NOT NULL AUTO_INCREMENT,
+                                           EVENT_DATE DATETIME NOT NULL,
+                                           EVENT_TYPE VARCHAR(10) DEFAULT NULL,
+                                           BOOK_ID INT(11) NOT NULL,
+                                           OLD_TITLE VARCHAR(30),
+                                           NEW_TITLE VARCHAR(30),
+                                           OLD_PUBYER INT(11),
+                                           NEW_PUBYER INT(11),
+                                           OLD_BESTSELLER BOOLEAN,
+                                           NEW_BESTSELLER BOOLEAN,
+                                           PRIMARY KEY (EVENT_ID)
+                )
+
+
+DELIMITER $$
+
+CREATE TRIGGER BOOKS_INSERT AFTER INSERT ON BOOKS
+                    FOR EACH ROW
+                BEGIN
+                    INSERT INTO books_aud (EVENT_DATE, EVENT_TYPE, BOOK_ID, NEW_TITLE, NEW_PUBYER, NEW_BESTSELLER)
+                        VALUE(CURTIME(), "INSERT", NEW.BOOK_ID, NEW.TITLE, NEW.BESTSELLER );
+                END
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER READERS_INSERT AFTER INSERT ON readers
+    FOR EACH ROW
+BEGIN
+    INSERT INTO reader_aud (EVENT_DATE, EVENT_TYPE, NEW_PESELID, NEW_FIRST_NAME, NEW_LAST_NAME)
+        VALUE(CURTIME(), "INSERT", NEW.PESELID, NEW.FIRSTNAME, NEW.LASTNAME);
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER BOOKS_DELETE AFTER DELETE ON BOOKS
+    FOR EACH ROW
+BEGIN
+    INSERT INTO books_aud (EVENT_DATE, EVENT_TYPE, OLD_TITLE, OLD_PUBYER, OLD_BESTSELLER)
+        VALUE(CURTIME(), "DELETE", OLD.TITLE, OLD.PUBYEAR, OLD_BESTSELLER);
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER READERS_DELETE AFTER DELETE ON readers
+    FOR EACH ROW
+BEGIN
+    INSERT INTO reader_aud (EVENT_DATE, EVENT_TYPE, OLD_FIRST_NAME, OLD_LAST_NAME, OLD_PESELID)
+        VALUE(CURTIME(), "DELETE", OLD.FIRSTNAME, OLD.LASTNAME, OLD_PESELID);
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER BOOKS_UPDATE AFTER UPDATE ON books
+    FOR EACH ROW
+BEGIN
+    INSERT INTO books_aud (EVENT_DATE, EVENT_TYPE, BOOK_ID, OLD_TITLE, NEW_TITLE, OLD_PUBYER, NEW_PUBYER, OLD_BESTSELLER, NEW_BESTSELLER)
+        VALUE(CURTIME(), "UPDATE", NEW.BOOK_ID, OLD.TITLE, NEW.TITLE, OLD.PUBYEAR, NEW.PUBYEAR, OLD_BESTSELLER, NEW.BESTSELLER );
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER READERS_UPDATE AFTER UPDATE ON readers
+    FOR EACH ROW
+BEGIN
+    INSERT INTO reader_aud (EVENT_DATE, EVENT_TYPE, OLD_FIRST_NAME, NEW_FIRST_NAME, OLD_LAST_NAME, NEW_LAST_NAME, OLD_PESELID, NEW_PESELID)
+        VALUE(CURTIME(), "UPDATE", OLD.FIRSTNAME, NEW.FIRSTNAME, OLD.LASTNAME, NEW.LASTNAME, OLD.PESELID, NEW.PESELID);
+END $$
+
+DELIMITER ;
