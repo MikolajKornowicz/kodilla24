@@ -8,18 +8,24 @@ CREATE TABLE STATS (
 CREATE VIEW BESTSELLERS_COUNT AS
     SELECT COUNT(*) FROM books WHERE BESTSELLER = TRUE;
 
+DELIMITER $$
 
-DROP EVENT IF EXISTS UPDATE_BESTSELLERS_COUNT;
+CREATE PROCEDURE InsertBestsellerIntoStats ()
+BEGIN
+    insert into stats(STAT_DATE, VALUE, STAT) values(current_date, (select COUNT(*) from bestsellers_count),'Bestsellers');
+    commit;
+end $$
+
+DELIMITER ;
 
 DELIMITER $$
 
 CREATE EVENT UPDATE_BESTSELLERS_COUNT ON SCHEDULE EVERY 1 MINUTE
-DO
-begin
-    call IdentifyBestsellers();
-    insert into stats(STAT_DATE) value(current_date);
-    insert into stats(value) select COUNT(*) from bestsellers_count;
-    insert into stats(STAT) value ('BESTSELLER');
-end $$
+    DO
+    begin
+        call IdentifyBestsellers();
+        call InsertBestsellerIntoStats();
+
+    end $$
 
 DELIMITER ;
