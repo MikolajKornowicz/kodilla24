@@ -1,0 +1,4 @@
+CREATE INDEX BookTitle on Books (Title);
+CREATE INDEX ReadersNames on readers (FIRSTNAME, LASTNAME);
+
+SELECT * from readers where FIRSTNAME='John';
