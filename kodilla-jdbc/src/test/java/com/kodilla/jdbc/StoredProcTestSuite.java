@@ -42,20 +42,18 @@ public class StoredProcTestSuite {
         String sqlUpdate = "UPDATE BOOKS SET BESTSELLER=null";
         Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
-        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=null";
-        ResultSet rs = statement.executeQuery(sqlCheckTable);
         //when
         String sqlProcedureCall = "CALL IDENTIFYBESTSELLERS()";
         statement.execute(sqlProcedureCall);
         //then
-                /*
+        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=null";
+        ResultSet rs = statement.executeQuery(sqlCheckTable);
         int howMany = -1;
         if(rs.next()){
-            howMany= rs.getInt("HOW MANY");
+            howMany= rs.getInt("HOW_MANY");
         }
         assertEquals(0, howMany);
         rs.close();
         statement.close();
-         */
     }
 }
